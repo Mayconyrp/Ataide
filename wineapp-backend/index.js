@@ -4,13 +4,15 @@ const cors = require("cors")
 const axios = require('axios');
 // Import BD
 const wineappbd = require("./database/wineappdb")
-const Usuario = require("./models/Usuario")
+const Empresa = require("./models/Empresa")
 const Funcionario = require("./models/Funcionario")
 const Vinicola = require("./models/Vinicola")
 //Import Controllers
-const usuariosController = require("./usuarios/UsuariosController.js") //cadastro de empresas
+const EmpresasController = require("./Empresa/EmpresasControllers") //cadastro de empresas
 const funcionariosController = require("./Funcionarios/FuncionariosController")
 const vinicolasController = require("./Vinocola/VinicolasController")
+const estoquesController = require("./Estoque/EstoquesControllers")
+
 //const previsaoController = require("./Previsao/PrevisaoController.js")
 
 //Configuracoes Express
@@ -29,9 +31,11 @@ wineappbd
 
 
 //Usuarios - Vinicolas
-app.use("/", usuariosController)
+app.use("/", EmpresasController)
 app.use("/", funcionariosController)
 app.use("/", vinicolasController)
+app.use("/", estoquesController)
+
 
 
 
