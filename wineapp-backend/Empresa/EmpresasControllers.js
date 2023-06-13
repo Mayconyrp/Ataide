@@ -61,9 +61,13 @@ router.put('/empresas/:id_empresa', (req, res) => {
     const empresaId = req.params.id_empresa;
     const { nomeEmpresa, cnpjEmpresa, emailEmpresa, telefoneEmpresa, passwordEmpresa } = req.body;
 
+    console.log('Dados recebidos:', req.body);
+
     Empresa.findByPk(empresaId)
         .then((empresa) => {
             if (empresa) {
+                console.log('Empresa encontrada:', empresa.toJSON());
+
                 empresa.nome_empresa = nomeEmpresa;
                 empresa.cnpj_empresa = cnpjEmpresa;
                 empresa.email_empresa = emailEmpresa;
